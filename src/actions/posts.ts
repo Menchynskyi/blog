@@ -3,6 +3,7 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
 import { actionTypes } from './types';
 import { RootState } from '../reducers';
+import { Post } from '../types';
 
 export type AppThunkDispatch = ThunkDispatch<RootState, void, Action>;
 
@@ -45,6 +46,21 @@ export const getPostById = (postId: string): AppThunkAction => async (
   }
 };
 
-export const resetCurrentPost = () => dispatch => {
+export const resetCurrentPost = () => (dispatch: AppThunkDispatch) => {
   dispatch({ type: actionTypes.RESET_CURRENT_POST });
+};
+
+export const createNewPost = (
+  values: Omit<Post, 'id'>
+): AppThunkAction => async (dispatch: AppThunkDispatch) => {
+  dispatch({ type: actionTypes.CREATE_POST });
+  try {
+    await axios.post(`${apiUrl}`, values);
+    dispatch({
+      type: actionTypes.CREATE_POST_SUCCESS,
+    });
+  } catch (error) {
+    dispatch({ type: actionTypes.CREATE_POST_ERROR });
+    throw new Error(error);
+  }
 };

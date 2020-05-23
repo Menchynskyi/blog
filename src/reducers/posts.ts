@@ -8,6 +8,9 @@ export type PostsState = {
   currentPost: Post | null;
   currentPostLoaded: boolean;
   currentPostError: boolean;
+  createdPostLoading: boolean;
+  createdPostSuccesfull: boolean;
+  createdPostError: boolean;
 };
 
 const initialState: PostsState = {
@@ -17,6 +20,9 @@ const initialState: PostsState = {
   currentPost: null,
   currentPostLoaded: false,
   currentPostError: false,
+  createdPostLoading: false,
+  createdPostSuccesfull: false,
+  createdPostError: false,
 };
 
 export const postsReducer = (
@@ -58,6 +64,28 @@ export const postsReducer = (
         currentPost: null,
         currentPostError: false,
         currentPostLoaded: false,
+      };
+    }
+    case 'CREATE_POST': {
+      return {
+        ...state,
+        createdPostLoading: true,
+      };
+    }
+    case 'CREATE_POST_SUCCESS': {
+      return {
+        ...state,
+        createdPostSuccesfull: true,
+        createdPostLoading: false,
+        createdPostError: false,
+      };
+    }
+    case 'CREATE_POST_ERROR': {
+      return {
+        ...state,
+        createdPostSuccesfull: false,
+        createdPostLoading: false,
+        createdPostError: true,
       };
     }
     default: {
