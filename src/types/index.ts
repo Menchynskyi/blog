@@ -1,12 +1,12 @@
 export type Post = {
-  id: string;
+  id: number;
   title: string;
   body: string;
   comments?: Comment[];
 };
 
 export type Comment = {
-  id: string;
+  id: number;
   postId: string;
   body: string;
 };

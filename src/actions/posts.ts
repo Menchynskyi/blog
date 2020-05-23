@@ -29,3 +29,22 @@ export const fetchPosts = (): AppThunkAction => async (
     throw new Error(error);
   }
 };
+
+export const getPostById = (postId: string): AppThunkAction => async (
+  dispatch: AppThunkDispatch
+): Promise<void> => {
+  try {
+    const { data } = await axios(`${apiUrl}/${postId}?_embed=comments`);
+    dispatch({
+      type: actionTypes.GET_POST_BY_ID,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({ type: actionTypes.FETCH_POSTS_ERROR });
+    throw new Error(error);
+  }
+};
+
+export const resetCurrentPost = () => dispatch => {
+  dispatch({ type: actionTypes.RESET_CURRENT_POST });
+};
