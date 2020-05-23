@@ -24,28 +24,17 @@ const Home: NextPage = () => {
   if (error) return <ErrorMessage>Something went wrong...</ErrorMessage>;
 
   return (
-    <div className="container">
-      <Head>
-        <title>Blog</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <Layout>
-        {loaded && (
-          <PostList>
-            {postList.map((post, id) => (
-              <PostListItem key={post.id}>
-                <PostCard post={post} />
-              </PostListItem>
-            ))}
-          </PostList>
-        )}
-      </Layout>
-    </div>
+    <Layout>
+      {loaded && (
+        <PostList>
+          {postList.map((post, id) => (
+            <PostListItem key={post.id}>
+              <PostCard post={post} />
+            </PostListItem>
+          ))}
+        </PostList>
+      )}
+    </Layout>
   );
 };
 

@@ -1,11 +1,19 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
+import { NextPage } from 'next';
 import { Layout, ErrorMessage } from '../../../components';
 import { getPostById, resetCurrentPost } from '../../../actions';
 import { RootState } from '../../../reducers';
+import {
+  PostContainer,
+  PostTitle,
+  CommentList,
+  CommentListItem,
+  PostBody,
+} from '../../../styles';
 
-const PostId = () => {
+const PostId: NextPage = () => {
   const { query } = useRouter();
 
   const dispatch = useDispatch();
@@ -28,7 +36,24 @@ const PostId = () => {
 
   if (error) return <ErrorMessage>Something went wrong...</ErrorMessage>;
 
-  return <Layout>{}</Layout>;
+  return (
+    <Layout>
+      {loaded && (
+        <PostContainer>
+          <PostTitle>{post.title}</PostTitle>
+          <PostBody>{post.body}</PostBody>
+          <CommentList>
+            {post.comments.map(({ id, body }) => (
+              <CommentListItem key={id}>
+                <img src="/user.png" alt="user" />
+                <span>{body}</span>
+              </CommentListItem>
+            ))}
+          </CommentList>
+        </PostContainer>
+      )}
+    </Layout>
+  );
 };
 
 export default PostId;
