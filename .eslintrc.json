@@ -47,6 +47,7 @@
         "react/jsx-props-no-spreading": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "jsx-a11y/anchor-is-valid": "off",
+        "react/prop-types": "off", // typescript will check it
         "react/jsx-filename-extension": [
             1,
             {

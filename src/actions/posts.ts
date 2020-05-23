@@ -18,9 +18,14 @@ const apiUrl = 'https://simple-blog-api.crew.red/posts';
 export const fetchPosts = (): AppThunkAction => async (
   dispatch: AppThunkDispatch
 ): Promise<void> => {
-  const { data } = await axios(apiUrl);
-  dispatch({
-    type: actionTypes.FETCH_POSTS,
-    payload: data,
-  });
+  try {
+    const { data } = await axios(apiUrl);
+    dispatch({
+      type: actionTypes.FETCH_POSTS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({ type: actionTypes.FETCH_POSTS_ERROR });
+    throw new Error(error);
+  }
 };

@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
-import styled from 'styled-components';
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../actions';
 import { RootState } from '../reducers';
-
-export const Main = styled.main`
-  color: ${({ theme }) => theme.colors.blue.primary};
-`;
+import { Layout } from '../components';
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
-  const postList = useSelector(({ posts }: RootState) => {
-    return posts.postList;
+  const { postList, loaded, error } = useSelector(({ posts }: RootState) => {
+    return {
+      postList: posts.postList,
+      loaded: posts.postListLoaded,
+      error: posts.postListError,
+    };
   });
 
   useEffect(() => {
@@ -31,7 +31,9 @@ const Home: NextPage = () => {
           rel="stylesheet"
         />
       </Head>
-      <Main>Blog</Main>
+      <Layout>
+        {loaded && postList.map(post => <div key={post.id}>{post.body}</div>)}
+      </Layout>
     </div>
   );
 };
