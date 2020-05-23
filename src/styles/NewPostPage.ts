@@ -17,11 +17,11 @@ const inputStyle = css`
   width: 100%;
   margin-bottom: 20px;
   padding: 10px 15px;
-  border-radius: ${({ theme }) => theme.borderRadius.small};
+  border-radius: ${({ theme }) => theme.borderRadius};
   border: 1px solid ${({ theme }) => theme.colors.text.secondary};
   color: ${({ theme }) => theme.colors.text.primary};
   font-size: ${({ theme }) => theme.fontSize.text.large};
-  box-shadow: ${({ theme }) => theme.boxShadow.main};
+  box-shadow: ${({ theme }) => theme.boxShadow};
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.text.secondary};
@@ -42,10 +42,10 @@ export const SumbitButton = styled.button`
   padding: 12px 15px;
   text-transform: uppercase;
   background-color: ${({ theme, disabled }) =>
-    disabled ? theme.colors.text.secondary : theme.colors.blue.primary};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
+    disabled ? theme.colors.text.secondary : theme.colors.blue};
+  border-radius: ${({ theme }) => theme.borderRadius};
   border: none;
-  box-shadow: ${({ theme }) => theme.boxShadow.main};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   font-size: ${({ theme }) => theme.fontSize.text.large};
   color: ${({ theme }) => theme.colors.background.primary};
   letter-spacing: ${({ theme }) => theme.letterSpacing};

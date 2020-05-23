@@ -7,17 +7,13 @@ export const lightTheme: DefaultTheme = {
     background: {
       primary: '#FFFFFF',
       secondary: '#EFEFEF',
-      transparent: 'rgba(0, 0, 0, 0.3)',
     },
     text: {
       primary: '#333333',
       secondary: 'rgb(115, 138, 148)',
     },
     red: '#FF6767',
-    blue: {
-      primary: '#8EA7FF',
-      secondary: '#7291FF',
-    },
+    blue: '#708DF3',
   },
   fontSize: {
     heading: {
@@ -33,15 +29,8 @@ export const lightTheme: DefaultTheme = {
       extraLarge: '18px',
     },
   },
-  boxShadow: {
-    main: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-    focus: '0px 0px 0px 2px #8EA7FF',
-  },
-  borderRadius: {
-    small: '6px',
-    regular: '10px',
-    large: '20px',
-  },
+  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+  borderRadius: '6px',
   device: {
     mobileS: `only screen and (max-width: ${size.mobile - 1}px)`,
     mobile: `only screen and (max-width: ${size.tablet - 1}px)`,

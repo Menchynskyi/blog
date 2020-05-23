@@ -6,17 +6,13 @@ declare module 'styled-components' {
       background: {
         primary: string;
         secondary: string;
-        transparent: string;
       };
       text: {
         primary: string;
         secondary: string;
       };
       red: string;
-      blue: {
-        primary: string;
-        secondary: string;
-      };
+      blue: string;
     };
     fontFamily: string;
     fontSize: {
@@ -34,15 +30,8 @@ declare module 'styled-components' {
       };
     };
     hoverOpacity: string;
-    boxShadow: {
-      main: string;
-      focus: string;
-    };
-    borderRadius: {
-      small: string;
-      regular: string;
-      large: string;
-    };
+    boxShadow: string;
+    borderRadius: string;
     device: {
       mobileS: string;
       mobile: string;

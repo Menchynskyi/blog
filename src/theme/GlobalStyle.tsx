@@ -18,13 +18,13 @@ export const GlobalStyle = createGlobalStyle`
     overflow-y: scroll;
 
     & ::selection {
-      background-color: ${({ theme }) => theme.colors.blue.primary};
+      background-color: ${({ theme }) => theme.colors.blue};
       color: ${({ theme }) => theme.colors.background.primary};
       text-shadow: none;
     }
 
     & ::-moz-selection {
-      background-color: ${({ theme }) => theme.colors.blue.primary};
+      background-color: ${({ theme }) => theme.colors.blue};
       color: ${({ theme }) => theme.colors.background.primary};
       text-shadow: none;
     }
