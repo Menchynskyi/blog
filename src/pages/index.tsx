@@ -4,7 +4,7 @@ import { NextPage } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../actions';
 import { RootState } from '../reducers';
-import { Layout, PostCard } from '../components';
+import { Layout, PostCard, ErrorMessage } from '../components';
 import { PostList, PostListItem } from '../styles';
 
 const Home: NextPage = () => {
@@ -20,6 +20,8 @@ const Home: NextPage = () => {
   useEffect(() => {
     dispatch(fetchPosts());
   }, []);
+
+  if (error) return <ErrorMessage>Something went wrong...</ErrorMessage>;
 
   return (
     <div className="container">
