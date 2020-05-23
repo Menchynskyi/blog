@@ -13,4 +13,5 @@ Blog where you can read and create posts.
 * Make fetching posts on the server
 * Implement other features (edit/delete posts, comments, etc.)
 * Improve design
+* Add skeleton loading
 * Work on a11y

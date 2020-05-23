@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { NextPage } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 import fp from 'lodash/fp';
