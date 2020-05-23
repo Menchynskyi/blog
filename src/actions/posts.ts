@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { Action } from 'redux';
+import fp from 'lodash/fp';
 import { actionTypes } from './types';
 import { RootState } from '../reducers';
 import { Post } from '../types';
@@ -21,13 +22,12 @@ export const fetchPosts = (): AppThunkAction => async (
 ): Promise<void> => {
   try {
     const { data } = await axios(apiUrl);
-    const postList: Post[] = [...data]
-      .reverse()
-      .filter(({ title }) => title.trim());
+    const filteredPostList = fp.filter(({ title }) => title.trim())(data);
+    const reversedPostList = fp.reverse(filteredPostList);
 
     dispatch({
       type: actionTypes.FETCH_POSTS,
-      payload: postList,
+      payload: reversedPostList,
     });
   } catch (error) {
     dispatch({ type: actionTypes.FETCH_POSTS_ERROR });

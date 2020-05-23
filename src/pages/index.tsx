@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { NextPage } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
+import fp from 'lodash/fp';
 import { fetchPosts } from '../actions';
 import { RootState } from '../reducers';
 import { PostCard, ErrorMessage } from '../components';
 import { PostList, PostListItem } from '../styles';
+import { Post } from '../types';
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
@@ -21,20 +23,19 @@ const Home: NextPage = () => {
   }, []);
 
   if (error) return <ErrorMessage>Something went wrong...</ErrorMessage>;
+  if (!loaded) return null;
 
-  return (
-    <>
-      {loaded && (
-        <PostList>
-          {postList.map((post, id) => (
-            <PostListItem key={post.id}>
-              <PostCard post={post} />
-            </PostListItem>
-          ))}
-        </PostList>
-      )}
-    </>
-  );
+  const renderPostList = (postArr: Post[]) => {
+    return fp.map((post: Post) => {
+      return (
+        <PostListItem key={post.id}>
+          <PostCard post={post} />
+        </PostListItem>
+      );
+    })(postArr);
+  };
+
+  return <PostList>{renderPostList(postList)}</PostList>;
 };
 
 export default Home;
