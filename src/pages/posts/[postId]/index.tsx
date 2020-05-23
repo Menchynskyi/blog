@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { NextPage } from 'next';
-import { Layout, ErrorMessage } from '../../../components';
+import { ErrorMessage } from '../../../components';
 import { getPostById, resetCurrentPost } from '../../../actions';
 import { RootState } from '../../../reducers';
 import {

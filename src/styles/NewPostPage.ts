@@ -43,13 +43,13 @@ export const SumbitButton = styled.button`
   text-transform: uppercase;
   background-color: ${({ theme, disabled }) =>
     disabled ? theme.colors.text.secondary : theme.colors.blue.primary};
-  border: none;
   border-radius: ${({ theme }) => theme.borderRadius.small};
+  border: none;
   box-shadow: ${({ theme }) => theme.boxShadow.main};
   font-size: ${({ theme }) => theme.fontSize.text.large};
   color: ${({ theme }) => theme.colors.background.primary};
-  transition: all 0.2s;
   letter-spacing: ${({ theme }) => theme.letterSpacing};
+  transition: all 0.2s;
 
   &:hover {
     cursor: ${({ disabled }) => !disabled && 'pointer'};

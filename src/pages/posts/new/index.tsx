@@ -2,7 +2,7 @@ import { useState, ChangeEvent, useEffect } from 'react';
 import { NextPage } from 'next';
 import Router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { Layout, ErrorMessage } from '../../../components';
+import { ErrorMessage } from '../../../components';
 import {
   NewPostContainer,
   TitleField,

@@ -37,4 +37,11 @@ export const Content = styled.div`
   font-size: ${({ theme }) => theme.fontSize.text.regular};
   color: ${({ theme }) => theme.colors.text.secondary};
   line-height: 1.7em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 `;

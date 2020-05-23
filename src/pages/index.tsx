@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../actions';
 import { RootState } from '../reducers';
-import { Layout, PostCard, ErrorMessage } from '../components';
+import { PostCard, ErrorMessage } from '../components';
 import { PostList, PostListItem } from '../styles';
 
 const Home: NextPage = () => {
