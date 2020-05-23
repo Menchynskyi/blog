@@ -1,4 +1,4 @@
-export { PostList, PostListItem } from './PostList';
+export { PostList, PostListItem } from './HomePage';
 export {
   PostTitle,
   PostContainer,
@@ -6,3 +6,9 @@ export {
   CommentListItem,
   PostBody,
 } from './PostPage';
+export {
+  NewPostContainer,
+  TitleField,
+  BodyField,
+  SumbitButton,
+} from './NewPostPage';

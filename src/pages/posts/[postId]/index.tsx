@@ -13,7 +13,7 @@ import {
   PostBody,
 } from '../../../styles';
 
-const PostId: NextPage = () => {
+const PostPage: NextPage = () => {
   const { query } = useRouter();
 
   const dispatch = useDispatch();
@@ -56,4 +56,4 @@ const PostId: NextPage = () => {
   );
 };
 
-export default PostId;
+export default PostPage;

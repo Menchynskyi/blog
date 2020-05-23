@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Head from 'next/head';
 import { NextPage } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../actions';

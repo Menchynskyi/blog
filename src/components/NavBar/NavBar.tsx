@@ -12,7 +12,7 @@ export const NavBar: React.FC = () => {
         </NavItem>
         <NavItem>
           <Link href="/posts/new">
-            <a>Create post</a>
+            <a>new post</a>
           </Link>
         </NavItem>
       </NavList>
