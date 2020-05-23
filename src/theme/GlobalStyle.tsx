@@ -16,5 +16,17 @@ export const GlobalStyle = createGlobalStyle`
   }
   html {
     overflow-y: scroll;
+
+    & ::selection {
+      background-color: ${({ theme }) => theme.colors.blue.primary};
+      color: ${({ theme }) => theme.colors.background.primary};
+      text-shadow: none;
+    }
+
+    & ::-moz-selection {
+      background-color: ${({ theme }) => theme.colors.blue.primary};
+      color: ${({ theme }) => theme.colors.background.primary};
+      text-shadow: none;
+    }
   }
 `;

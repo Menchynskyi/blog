@@ -10,6 +10,7 @@ const RESET_CURRENT_POST = 'RESET_CURRENT_POST';
 const CREATE_POST = 'CREATE_POST';
 const CREATE_POST_SUCCESS = 'CREATE_POST_SUCCESS';
 const CREATE_POST_ERROR = 'CREATE_POST_ERROR';
+const RESET_CREATED_POST = 'RESET_CREATED_POST';
 
 export type Action =
   | {
@@ -28,7 +29,8 @@ export type Action =
     }
   | {
       type: typeof CREATE_POST_ERROR;
-    };
+    }
+  | { type: typeof RESET_CREATED_POST };
 
 export const actionTypes = {
   FETCH_POSTS,
@@ -39,4 +41,5 @@ export const actionTypes = {
   CREATE_POST,
   CREATE_POST_SUCCESS,
   CREATE_POST_ERROR,
+  RESET_CREATED_POST,
 };

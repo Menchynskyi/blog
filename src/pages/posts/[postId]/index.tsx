@@ -14,7 +14,8 @@ import {
 } from '../../../styles';
 
 const PostPage: NextPage = () => {
-  const { query } = useRouter();
+  const router = useRouter();
+  const { postId } = router.query;
 
   const dispatch = useDispatch();
   const { post, loaded, error } = useSelector(({ posts }: RootState) => {
@@ -26,13 +27,13 @@ const PostPage: NextPage = () => {
   });
 
   useEffect(() => {
-    if (query.postId) {
-      dispatch(getPostById(query.postId as string));
+    if (postId) {
+      dispatch(getPostById(postId as string));
     }
     return () => {
       dispatch(resetCurrentPost());
     };
-  }, [query.postId]);
+  }, [postId]);
 
   if (error) return <ErrorMessage>Something went wrong...</ErrorMessage>;
 

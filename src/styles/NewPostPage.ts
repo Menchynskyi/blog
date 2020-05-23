@@ -14,7 +14,7 @@ const inputStyle = css`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   border: 1px solid ${({ theme }) => theme.colors.text.secondary};
   color: ${({ theme }) => theme.colors.text.primary};
-  font-size: ${({ theme }) => theme.fontSize.text.extraLarge};
+  font-size: ${({ theme }) => theme.fontSize.text.large};
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.text.secondary};
@@ -34,7 +34,8 @@ export const SumbitButton = styled.button`
   width: 100%;
   padding: 12px 15px;
   text-transform: uppercase;
-  background-color: ${({ theme }) => theme.colors.blue.primary};
+  background-color: ${({ theme, disabled }) =>
+    disabled ? theme.colors.text.secondary : theme.colors.blue.primary};
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius.small};
   font-size: ${({ theme }) => theme.fontSize.text.extraLarge};
@@ -43,7 +44,7 @@ export const SumbitButton = styled.button`
   letter-spacing: ${({ theme }) => theme.letterSpacing};
 
   &:hover {
-    cursor: pointer;
-    opacity: ${({ theme }) => theme.hoverOpacity};
+    cursor: ${({ disabled }) => !disabled && 'pointer'};
+    opacity: ${({ theme, disabled }) => !disabled && theme.hoverOpacity};
   }
 `;

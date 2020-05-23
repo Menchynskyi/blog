@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, useEffect } from 'react';
 import { NextPage } from 'next';
 import Router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import {
   BodyField,
   SumbitButton,
 } from '../../../styles';
-import { createNewPost } from '../../../actions';
+import { createNewPost, resetCreatedPost } from '../../../actions';
 import { RootState } from '../../../reducers';
 
 type FormValues = {
@@ -23,16 +23,26 @@ const initialFormValues: FormValues = {
 };
 
 const NewPost: NextPage = () => {
+  const [values, setValues] = useState<FormValues>(initialFormValues);
+
   const dispatch = useDispatch();
-  const { error, loading, isCreated } = useSelector(({ posts }: RootState) => {
+  const { error, isCreated } = useSelector(({ posts }: RootState) => {
     return {
       error: posts.createdPostError,
-      loading: posts.createdPostLoading,
       isCreated: posts.createdPostSuccesfull,
     };
   });
 
-  const [values, setValues] = useState<FormValues>(initialFormValues);
+  useEffect(() => {
+    return () => {
+      dispatch(resetCreatedPost());
+    };
+  }, []);
+
+  if (error) return <ErrorMessage>Oops.</ErrorMessage>;
+  if (isCreated) {
+    Router.push('/');
+  }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -48,10 +58,7 @@ const NewPost: NextPage = () => {
     setValues(prev => ({ ...prev, [name]: value }));
   };
 
-  if (error) return <ErrorMessage>Oops.</ErrorMessage>;
-  if (isCreated) {
-    Router.push('/');
-  }
+  const isDisabled = !values.body || !values.title;
 
   return (
     <Layout>
@@ -68,9 +75,11 @@ const NewPost: NextPage = () => {
             value={values.body}
             onChange={handleChange}
             placeholder="What do you want to tell"
-            rows={8}
+            rows={16}
           />
-          <SumbitButton type="submit">Create post</SumbitButton>
+          <SumbitButton disabled={isDisabled} type="submit">
+            Create post
+          </SumbitButton>
         </form>
       </NewPostContainer>
     </Layout>

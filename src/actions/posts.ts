@@ -23,7 +23,7 @@ export const fetchPosts = (): AppThunkAction => async (
     const { data } = await axios(apiUrl);
     dispatch({
       type: actionTypes.FETCH_POSTS,
-      payload: data,
+      payload: [...data].reverse(),
     });
   } catch (error) {
     dispatch({ type: actionTypes.FETCH_POSTS_ERROR });
@@ -53,7 +53,6 @@ export const resetCurrentPost = () => (dispatch: AppThunkDispatch) => {
 export const createNewPost = (
   values: Omit<Post, 'id'>
 ): AppThunkAction => async (dispatch: AppThunkDispatch) => {
-  dispatch({ type: actionTypes.CREATE_POST });
   try {
     await axios.post(`${apiUrl}`, values);
     dispatch({
@@ -63,4 +62,8 @@ export const createNewPost = (
     dispatch({ type: actionTypes.CREATE_POST_ERROR });
     throw new Error(error);
   }
+};
+
+export const resetCreatedPost = () => (dispatch: AppThunkDispatch) => {
+  dispatch({ type: actionTypes.RESET_CREATED_POST });
 };
