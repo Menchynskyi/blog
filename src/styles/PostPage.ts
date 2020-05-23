@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const PostContainer = styled.article`
   display: flex;
   flex-flow: column wrap;
-  max-width: 800px;
+  max-width: 840px;
+  padding: 0 20px;
   margin: 40px auto;
 `;
 

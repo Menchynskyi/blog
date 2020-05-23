@@ -5,7 +5,7 @@ export const NavList = styled.ul`
   justify-content: space-between;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
 `;
 
 export const NavItem = styled.li`

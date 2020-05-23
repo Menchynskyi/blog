@@ -21,9 +21,13 @@ export const fetchPosts = (): AppThunkAction => async (
 ): Promise<void> => {
   try {
     const { data } = await axios(apiUrl);
+    const postList: Post[] = [...data]
+      .reverse()
+      .filter(({ title }) => title.trim());
+
     dispatch({
       type: actionTypes.FETCH_POSTS,
-      payload: [...data].reverse(),
+      payload: postList,
     });
   } catch (error) {
     dispatch({ type: actionTypes.FETCH_POSTS_ERROR });
