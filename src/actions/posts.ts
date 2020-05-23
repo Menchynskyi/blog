@@ -13,12 +13,14 @@ export type AppThunkAction = ThunkAction<
   Action<string>
 >;
 
+const apiUrl = 'https://simple-blog-api.crew.red/posts';
+
 export const fetchPosts = (): AppThunkAction => async (
   dispatch: AppThunkDispatch
 ): Promise<void> => {
-  const { data } = await axios('https://simple-blog-api.crew.red/posts');
+  const { data } = await axios(apiUrl);
   dispatch({
     type: actionTypes.FETCH_POSTS,
-    payload: data.posts,
+    payload: data,
   });
 };

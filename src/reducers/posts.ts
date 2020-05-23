@@ -2,11 +2,11 @@ import { Action } from '../actions';
 import { Post } from '../types';
 
 export type PostsState = {
-  posts: Post[];
+  postList: Post[];
 };
 
 const initialState: PostsState = {
-  posts: [],
+  postList: [],
 };
 
 export const postsReducer = (
@@ -17,7 +17,7 @@ export const postsReducer = (
     case 'FETCH_POSTS': {
       return {
         ...state,
-        posts: action.payload,
+        postList: action.payload,
       };
     }
     default: {

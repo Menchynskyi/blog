@@ -1,12 +1,25 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
-import { NextPage } from 'next';
 import styled from 'styled-components';
+import { NextPage, GetServerSideProps } from 'next';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts } from '../actions';
+import { RootState } from '../reducers';
 
-export const StyledLol = styled.main`
+export const Main = styled.main`
   color: ${({ theme }) => theme.colors.blue.primary};
 `;
 
 const Home: NextPage = () => {
+  const dispatch = useDispatch();
+  const postList = useSelector(({ posts }: RootState) => {
+    return posts.postList;
+  });
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, []);
+
   return (
     <div className="container">
       <Head>
@@ -18,7 +31,7 @@ const Home: NextPage = () => {
           rel="stylesheet"
         />
       </Head>
-      <StyledLol>Blog</StyledLol>
+      <Main>Blog</Main>
     </div>
   );
 };

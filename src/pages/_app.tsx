@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import store, { wrapper } from '../store';
 import { GlobalStyle, lightTheme } from '../theme';
 
-const App = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
@@ -16,4 +16,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default wrapper.withRedux(App);
+export default wrapper.withRedux(MyApp);
