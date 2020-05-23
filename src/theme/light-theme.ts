@@ -56,5 +56,5 @@ export const lightTheme: DefaultTheme = {
     desktop: `only screen and (min-width: ${size.desktop}px)`,
   },
   hoverOpacity: '0.85',
-  letterSpacing: '2px',
+  letterSpacing: '1px',
 };
