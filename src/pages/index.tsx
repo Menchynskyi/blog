@@ -4,7 +4,8 @@ import { NextPage } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../actions';
 import { RootState } from '../reducers';
-import { Layout } from '../components';
+import { Layout, PostCard } from '../components';
+import { PostList, PostListItem } from '../styles';
 
 const Home: NextPage = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,15 @@ const Home: NextPage = () => {
         />
       </Head>
       <Layout>
-        {loaded && postList.map(post => <div key={post.id}>{post.body}</div>)}
+        {loaded && (
+          <PostList>
+            {postList.map((post, id) => (
+              <PostListItem key={post.id}>
+                <PostCard post={post} />
+              </PostListItem>
+            ))}
+          </PostList>
+        )}
       </Layout>
     </div>
   );
