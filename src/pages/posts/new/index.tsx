@@ -8,6 +8,7 @@ import {
   TitleField,
   BodyField,
   SumbitButton,
+  FormStyled,
 } from '../../../styles';
 import { createNewPost, resetCreatedPost } from '../../../actions';
 import { RootState } from '../../../reducers';
@@ -61,28 +62,26 @@ const NewPost: NextPage = () => {
   const isDisabled = !values.body || !values.title;
 
   return (
-    <Layout>
-      <NewPostContainer>
-        <form onSubmit={handleSubmit}>
-          <TitleField
-            name="title"
-            value={values.title}
-            onChange={handleChange}
-            placeholder="Title"
-          />
-          <BodyField
-            name="body"
-            value={values.body}
-            onChange={handleChange}
-            placeholder="What do you want to tell"
-            rows={16}
-          />
-          <SumbitButton disabled={isDisabled} type="submit">
-            Create post
-          </SumbitButton>
-        </form>
-      </NewPostContainer>
-    </Layout>
+    <NewPostContainer>
+      <FormStyled onSubmit={handleSubmit}>
+        <TitleField
+          name="title"
+          value={values.title}
+          onChange={handleChange}
+          placeholder="Title"
+        />
+        <BodyField
+          name="body"
+          value={values.body}
+          onChange={handleChange}
+          placeholder="What do you want to tell"
+          rows={16}
+        />
+        <SumbitButton disabled={isDisabled} type="submit">
+          Create post
+        </SumbitButton>
+      </FormStyled>
+    </NewPostContainer>
   );
 };
 

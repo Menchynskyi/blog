@@ -23,7 +23,7 @@ const Home: NextPage = () => {
   if (error) return <ErrorMessage>Something went wrong...</ErrorMessage>;
 
   return (
-    <Layout>
+    <>
       {loaded && (
         <PostList>
           {postList.map((post, id) => (
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
           ))}
         </PostList>
       )}
-    </Layout>
+    </>
   );
 };
 

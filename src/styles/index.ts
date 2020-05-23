@@ -11,4 +11,5 @@ export {
   TitleField,
   BodyField,
   SumbitButton,
+  FormStyled,
 } from './NewPostPage';

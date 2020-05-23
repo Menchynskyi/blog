@@ -8,6 +8,11 @@ export const NewPostContainer = styled.div`
   margin: 40px auto;
 `;
 
+export const FormStyled = styled.form`
+  display: flex;
+  flex-flow: column wrap;
+`;
+
 const inputStyle = css`
   width: 100%;
   margin-bottom: 20px;
@@ -41,7 +46,7 @@ export const SumbitButton = styled.button`
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius.small};
   box-shadow: ${({ theme }) => theme.boxShadow.main};
-  font-size: ${({ theme }) => theme.fontSize.text.extraLarge};
+  font-size: ${({ theme }) => theme.fontSize.text.large};
   color: ${({ theme }) => theme.colors.background.primary};
   transition: all 0.2s;
   letter-spacing: ${({ theme }) => theme.letterSpacing};

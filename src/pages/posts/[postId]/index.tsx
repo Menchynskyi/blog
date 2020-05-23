@@ -38,7 +38,7 @@ const PostPage: NextPage = () => {
   if (error) return <ErrorMessage>Something went wrong...</ErrorMessage>;
 
   return (
-    <Layout>
+    <>
       {loaded && (
         <PostContainer>
           <PostTitle>{post.title}</PostTitle>
@@ -53,7 +53,7 @@ const PostPage: NextPage = () => {
           </CommentList>
         </PostContainer>
       )}
-    </Layout>
+    </>
   );
 };
 
