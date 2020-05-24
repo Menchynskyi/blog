@@ -23,6 +23,9 @@ const Home: NextPage = () => {
   }, []);
 
   if (error) return <ErrorMessage>Something went wrong...</ErrorMessage>;
+  if (loaded && postList.length === 0) {
+    return <ErrorMessage color="regular">No posts yet.</ErrorMessage>;
+  }
   if (!loaded) return null;
 
   const renderPostList = (postArr: Post[]) => {

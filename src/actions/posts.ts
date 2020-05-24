@@ -22,7 +22,9 @@ export const fetchPosts = (): AppThunkAction => async (
 ): Promise<void> => {
   try {
     const { data } = await axios(apiUrl);
-    const filteredPostList = fp.filter(({ title }) => title.trim())(data);
+    const filteredPostList = fp.filter(
+      ({ title, body }) => title && body && title.trim() && body.trim()
+    )(data);
     const reversedPostList = fp.reverse(filteredPostList);
 
     dispatch({

@@ -5,6 +5,7 @@ type ErrorContainerProps = {
 };
 
 export const ErrorContainer = styled.div<ErrorContainerProps>`
+  margin-top: 40px;
   font-size: ${({ theme }) => theme.fontSize.heading.large};
   text-align: center;
   color: ${({ color, theme }) =>
